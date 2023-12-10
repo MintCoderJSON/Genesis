@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 import java.security.SecureRandom;
 
 public class Genesis {
@@ -10,6 +10,8 @@ public class Genesis {
 	}
 	
 	public String generatePassword(int length) {
+		
+		
 		String uppyChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String lowyChars = "abcdefghijklmnopqrstuvwxyz";
 		String numericChars = "0123456789";
@@ -40,10 +42,25 @@ public class Genesis {
 		
 	    return new String(passwordArray);
 	}
+	
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+
 		Genesis genesis = new Genesis();
 		String muscleMan = genesis.generatePassword(12);
-		System.out.println(muscleMan);
+		System.out.println("Generated password: " + muscleMan);
+		
+		System.out.println("Type '*' for a new password");
+		String interactive = scanner.nextLine();
+		
+		while(interactive.equals("*")) {
+			muscleMan = genesis.generatePassword(12);
+			System.out.println("Generated password: " + muscleMan);
+			
+			System.out.println("Type '*' for a new password");
+			interactive = scanner.nextLine();
+		}
+		
+		
 	}
 }
-
